@@ -1,0 +1,14 @@
+{
+  "name": "focus-timer",
+  "version": "1.0.0",
+  "description": "A Pomodoro timer with cycle tracking, no dependencies, no build step.",
+  "type": "module",
+  "main": "timer.js",
+  "scripts": {
+    "test": "node --test",
+    "demo": "node demo.js"
+  },
+  "keywords": ["pomodoro", "timer", "productivity", "vanilla-js"],
+  "license": "MIT",
+  "private": false
+}

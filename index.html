@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Focus Timer</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#9202;</text></svg>">
+</head>
+<body>
+<main class="app">
+  <header>
+    <h1>Focus Timer</h1>
+    <p class="tagline">One block at a time.</p>
+  </header>
+
+  <section class="clock" aria-live="polite">
+    <p class="phase" id="phase">Focus</p>
+    <p class="time" id="time">25:00</p>
+
+    <div class="ring" role="img" aria-label="Progress through the current phase">
+      <svg viewBox="0 0 120 120" aria-hidden="true">
+        <circle class="ring-track" cx="60" cy="60" r="54"></circle>
+        <circle class="ring-fill" id="ringFill" cx="60" cy="60" r="54"></circle>
+      </svg>
+      <div class="ring-label" id="cycleLabel">0 / 4</div>
+    </div>
+  </section>
+
+  <section class="controls">
+    <button id="startBtn" class="primary">Start</button>
+    <button id="resetBtn">Reset</button>
+    <button id="skipBtn">Skip phase</button>
+    <button id="soundBtn" class="ghost" aria-pressed="true">Sound: on</button>
+  </section>
+
+  <section class="settings">
+    <h2>Durations</h2>
+    <div class="field">
+      <label for="focusMin">Focus (min)</label>
+      <input type="number" id="focusMin" min="1" max="180" value="25">
+    </div>
+    <div class="field">
+      <label for="shortMin">Short break (min)</label>
+      <input type="number" id="shortMin" min="1" max="60" value="5">
+    </div>
+    <div class="field">
+      <label for="longMin">Long break (min)</label>
+      <input type="number" id="longMin" min="1" max="90" value="15">
+    </div>
+    <div class="field">
+      <label for="cycleLen">Blocks per cycle</label>
+      <input type="number" id="cycleLen" min="2" max="12" value="4">
+    </div>
+    <p class="hint">Changing a duration resets the current phase.</p>
+  </section>
+
+  <section class="stats">
+    <h2>This session</h2>
+    <div class="stat">
+      <span class="stat-value" id="blocksDone">0</span>
+      <span class="stat-label">focus blocks</span>
+    </div>
+    <div class="stat">
+      <span class="stat-value" id="minutesDone">0</span>
+      <span class="stat-label">minutes focused</span>
+    </div>
+    <div class="stat">
+      <span class="stat-value" id="taskCount">0</span>
+      <span class="stat-label">tasks left</span>
+    </div>
+  </section>
+
+  <section class="tasks">
+    <h2>What are you working on?</h2>
+    <div class="task-input">
+      <input type="text" id="taskText" placeholder="Describe the next block..." maxlength="120">
+      <button id="addTaskBtn">Add</button>
+    </div>
+    <ul id="taskList" class="task-list"></ul>
+    <p class="empty" id="taskEmpty">No tasks yet. One clear goal per block beats a long list.</p>
+  </section>
+
+  <footer>
+    <p>Keyboard: <kbd>Space</kbd> start/pause &middot; <kbd>R</kbd> reset &middot; <kbd>S</kbd> skip</p>
+  </footer>
+</main>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>
